@@ -2,3 +2,4 @@
   command = "pip install -r requirements.txt && gunicorn app:app"
   functions = "lambda/"
   publish = "."
+  base = "path/to/base/directory"
