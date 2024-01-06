@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chatbot Web App</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('/static/bg2.jpg');
+
+            background-size: cover; 
+            background-position: center;
+        }
+        h1, h2, form, .exit-button {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 4vh; 
+            text-align: center;
+        }
+
+        h2 {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 2vh; 
+            text-align: center;
+        }
+        h2 a {
+            color: #3498db; 
+            text-decoration: none; 
+            transition: color 0.3s ease-in-out; 
+        }
+
+        h2 a:hover {
+            color: #2980b9; 
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: color 0.3s ease-in-out; 
+
+        }
+        
+        button:hover{
+            background-color: #459147; 
+        }
+        p {
+            margin: 10px 0;
+            padding: 12px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .exit-button {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .exit-button:hover {
+            background-color: #c9302c;
+        }
+        
+        input::placeholder {
+        font-family: 'Poppins', sans-serif;
+        color: #999;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 4vh;
+            }
+        }
+
+    </style>
+    </head>
+    <body>
+        <h1>Chatbot Web App</h1>
+        <h2>Developed by <a href="https://www.linkedin.com/in/contactsaim/" target="_blank">Saim</a></h2>
+
+        <form action="/chat" method="post">
+            <label for="user_input">You:</label>
+            <input type="text" id="user_input" name="user_input" required
+                placeholder="Type your message here">
+            <button type="submit">Send</button>
+        </form>
+
+        {% if user_input %}
+        <p>You: {{ user_input }}</p>
+        {% endif %}
+
+        {% if bot_response %}
+        <p>Bot: {{ bot_response }}</p>
+        {% endif %}
+
+        <button onclick="resetConversation()" style="margin-top: 5px;">Exit
+            Conversation</button>
+
+        <script>
+    function resetConversation() {
+        window.location.href = '/';
+    }
+</script>
+
+    </body>
+</html>
