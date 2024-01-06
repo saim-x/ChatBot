@@ -1,7 +1,9 @@
 
 # app.py
+from gevent.pywsgi import WSGIServer
 from flask import Flask, render_template, request
 from chatbot_ai import Chatbot
+import os
 
 app = Flask(__name__)
 chatbot = Chatbot()
@@ -23,8 +25,9 @@ def chat():
 def reset():
     return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+http_server = WSGIServer(('', int(os.environ.get('PORT', 5000))), app)
+http_server.serve_forever()
+
 
 
 

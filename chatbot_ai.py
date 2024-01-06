@@ -1,6 +1,4 @@
 
-
-
 # chatbot_ai.py
 import google.generativeai as palm
 
