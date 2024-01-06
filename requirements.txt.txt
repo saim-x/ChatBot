@@ -1,0 +1,4 @@
+Flask==1.1.2
+google-generativeai
+gevent==21.8.0
+gunicorn
