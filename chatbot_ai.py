@@ -1,4 +1,4 @@
-
+#FILE FOR TEST USAGE, NO INVOLVMENT IN THE WEBSITE
 # chatbot_ai.py
 import google.generativeai as palm
 
